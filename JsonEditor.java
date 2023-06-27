@@ -45,9 +45,21 @@ public class JsonEditor {
             System.out.println(result);
         }
     }
-    public void set(String path, String value){}
-    public void create(String path, String value){}
-    public void delete(String path){}
+    public void set(String path, String value){
+        JsonSetter setter=new JsonSetter();
+        setter.set(path,value, file.getData());
+        System.out.println("set "+path);
+    }
+    public void create(String path, String value){
+        JsonSetter setter=new JsonSetter();
+        setter.create(path, value, file.getData());
+        System.out.println("created "+path);
+    }
+    public void delete(String path){
+        JsonSetter setter=new JsonSetter();
+        setter.delete(path, file.getData());
+        System.out.println("deleted "+path);
+    }
     public void move(String from, String to){}
     public void save(String path){}
     public void saveAs(String file, String path){}

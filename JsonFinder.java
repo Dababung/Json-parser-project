@@ -18,11 +18,9 @@ public class JsonFinder {
                         if (iEnd!=-1){
                             String value=jsonSt.substring(iStart, iEnd).trim();
                             results.add(value);
-                        }
+                        }}
                         i=jsonSt.indexOf(key,i+key.length());
                     }
                     return results;
         }
-        return null;
     }
-}
