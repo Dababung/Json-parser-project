@@ -13,7 +13,9 @@ public class JsonFile {
 
     public JsonFile(String filePath) {
         this.filePath = filePath;
+        this.data = new StringBuilder();
     }
+
     public void load(){ //https://www.digitalocean.com/community/tutorials/java-read-file-line-by-line
         try{
             Path path= Paths.get(filePath);//https://www.tabnine.com/code/java/methods/java.nio.file.Files/readAllLines

@@ -4,7 +4,7 @@ public class JsonSetter {
     public void set(String path, String value, StringBuilder jsonData){
         String[] divider=path.split("\\.");
         String json=jsonData.toString();
-        for (int i=0;i<divider.length;i++){
+        for (int i=0;i<divider.length-1;i++){
             String div=divider[i].trim();
             int iStart=json.indexOf(div);
             int iEnd=json.indexOf(":", iStart);
@@ -12,11 +12,11 @@ public class JsonSetter {
                 json=json.substring(0, iEnd)+" {"+json.substring(iEnd);
             }
         }
-        String segment=divider[divider.length].trim();
+        String segment=divider[divider.length-1].trim();
         int iStart=json.indexOf(segment);
-        int iEnd=json.indexOf(":",iStart);
+        int iEnd=json.indexOf(":",iStart)+1;
         if (iStart!=-1&&iEnd!=-1){
-            int iStartValue=json.indexOf(":",iStart);
+            int iStartValue=json.indexOf(":",iStart)+1;
             int iEndValue=json.indexOf(",",iStartValue);
             if (iEndValue==-1) {
                 iEndValue = json.indexOf("}", iStartValue);
@@ -29,7 +29,7 @@ public class JsonSetter {
     public void create(String path, String value, StringBuilder jsonData){
         String[] divider=path.split("\\.");
         String json=jsonData.toString();
-        for (int i=0;i<divider.length;i++){
+        for (int i=0;i<divider.length-1;i++){
             String div=divider[i].trim();
             int iStart=json.indexOf(div);
             int iEnd=json.indexOf(":", iStart);
@@ -37,11 +37,11 @@ public class JsonSetter {
                 json=json.substring(0, iEnd)+" {"+json.substring(iEnd);
             }
         }
-        String segment=divider[divider.length].trim();
+        String segment=divider[divider.length-1].trim();
         int iStart=json.indexOf(segment);
-        int iEnd=json.indexOf(":",iStart);
+        int iEnd=json.indexOf(":",iStart)+1;
         if (iStart!=-1&&iEnd!=-1){
-            int iStartValue=json.indexOf(":",iStart);
+            int iStartValue=json.indexOf(":",iStart)+1;
             int iEndValue=json.indexOf(",",iStartValue);
             if (iEndValue==-1) {
                 iEndValue = json.indexOf("}", iStartValue);
@@ -54,7 +54,7 @@ public class JsonSetter {
     public void delete(String path, StringBuilder jsonData){
         String[] divider=path.split("\\.");
         String json=jsonData.toString();
-        for (int i=0;i<divider.length;i++){
+        for (int i=0;i<divider.length-1;i++){
             String div=divider[i].trim();
             int iStart=json.indexOf(div);
             int iEnd=json.indexOf(":", iStart);
@@ -62,11 +62,11 @@ public class JsonSetter {
                 json=json.substring(0, iEnd)+" {"+json.substring(iEnd);
             }
         }
-        String segment=divider[divider.length].trim();
+        String segment=divider[divider.length-1].trim();
         int iStart=json.indexOf(segment);
-        int iEnd=json.indexOf(":",iStart);
+        int iEnd=json.indexOf(":",iStart)+1;
         if (iStart!=-1&&iEnd!=-1){
-            int iStartValue=json.indexOf(":",iStart);
+            int iStartValue=json.indexOf(":",iStart)+1;
             int iEndValue=json.indexOf(",",iStartValue);
             if (iEndValue==-1) {
                 iEndValue = json.indexOf("}", iStartValue);
@@ -76,6 +76,14 @@ public class JsonSetter {
         jsonData.setLength(0);
         jsonData.append(json);
     }
-    public void move(String path, String value, StringBuilder jsonData){}
+    public void move(String from, String to, StringBuilder jsonData){
+        String json=jsonData.toString();
+        if (json.contains(from)){
+            json=json.replace(from, to);
+            jsonData.setLength(0);
+            jsonData.append(json);
+        } else
+            System.out.println("path not found");
+    }
 
 }

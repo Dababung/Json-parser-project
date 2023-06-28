@@ -16,7 +16,7 @@ public class JsonFinder {
                             iEnd=jsonSt.indexOf("}", iStart);
                         }
                         if (iEnd!=-1){
-                            String value=jsonSt.substring(iStart, iEnd).trim();
+                            String value=jsonSt.substring(iStart+1, iEnd).trim();
                             results.add(value);
                         }}
                         i=jsonSt.indexOf(key,i+key.length());
