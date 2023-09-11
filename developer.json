@@ -1,0 +1,1 @@
+{  "student": {    "subject": "OOP1project",    "firstName": "Alexander",    "lastName": "Dimitrov",    "college": {      "collegeName": "TU-Varna",      "faculty": "FITA",      "facultyNumber": "21621618",      "group": "1b",      "specialty": "SIT",      "year": "2"    },    "project": {      "name": "JsonParser",      "developer": "Alexander",      "grade": "NA"    }  }}
